@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--------- INTERES -------------------->
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--------- STYLES -------------------->
+   <link rel="stylesheet" href="../css/stylenoticiasconsolidado.css">
+
+   <!--------- SCRIPTS -------------------->
+
+
+   <script src="js/credencialesgoogleapi.js"></script>
+   <script src="js/visualiizarnoticias.js" defer></script>
+
+	<!---------- NO TOCAR ------------------->
+	<script async defer src="https://apis.google.com/js/api.js" id="gapi"></script>
+	<script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
+	<!---------- NO TOCAR ------------------->
+
+   <script async defer src="js/cargardatosnoticias.js"></script>
+</head>
+
+<body>
+   <!---------- IMAGEN DE CANVA ------------------->
+   <section id="seccionbanner">
+      <div>
+         <img id="imagenbanner" src="https://lh3.googleusercontent.com/d/18P8NpX-5699j2dxLDvb1MVSYhSGqS_j9">
+      </div>
+   </section>
+
+   <!---------- TITULO ------------------->
+
+   <header id="encabezado">
+
+   </header>
+
+   <main>
+      <!---------- NOTICIAS  --------->
+      <section class="seccionNoticia">
+         <!---------- NOTICIA 1  --------->
+         <div class="tarjetaNoticia">
+            <div class="tarjetaImagen">
+               <img class="imagenNoticia" src="https://lh3.googleusercontent.com/d/1qq9lzPFrPelAu1b853Hj6QJo2PLBYDZg">
+            </div>
+
+            <div class="tarjetaCuerpo">
+
+               <h3 class="tarjetaTitulo">El aumento del avalúo catastral para 2026</h3>
+
+               <p class="tarjetaContenido">Según el <b>decreto vigente para 2026,</b> el avalúo catastral tuvo un
+                  incremento del 3% a partir del 1 de enero, aplicable a: <br>
+                  Predios urbanos y rurales que no fueron actualizados catastralmente en 2025. <br> Este ajuste busca
+                  mantener un equilibrio entre el valor catastral y las condiciones económicas actuales del país.
+               </p>
+
+               <a class="tarjetaLeermas"
+                  href="https://www.ciencuadras.com/blog/guia-para-comprar-vivienda/que-debes-conocer-y-como-calcular-el-avaluo-catastral">Leer más
+               </a>
+
+               <br>
+               <h5 class="tarjetaCreditos"> Tomado de Ciencuadras.com - 20/01/2026</h5>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <!---------- FOOTER --------->
+   <footer id="piepagina">
+
+   </footer>
+   <!--Add buttons to initiate auth sequence and sign out-->
+   <div>
+      <button class="button" id="authorize_button" onclick="handleAuthClick()">Iniciar sesión</button>
+      <button class="button" id="signout_button" onclick="handleSignoutClick()">Cerrar sesión</button>
+   </div>
+
+   <script src="js/conexiongoogleapinoticias.js"></script>
+</body>
+
+</html>

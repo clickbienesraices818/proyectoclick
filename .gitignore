@@ -1,0 +1,16 @@
+imagenes_noticias
+imagenes_predios
+imagenes_predios_webp
+imagenes_site
+iconos
+node_modules
+videos_predios
+videos_predios_webm
+.vscode
+node_modules
+libs
+vendor
+composer.json
+composer.lock
+package-lock.json
+package.json

@@ -1,0 +1,137 @@
+#datosConsulta {
+   position: fixed;
+   display: flex;
+   z-index: 800;
+   gap: 30px;
+   background-color: #000000;
+   height: auto;
+   color: #ffffff;
+   border-radius: 12px;
+   padding: 10px;
+   width: auto;
+   font-weight: bold;
+   top: 115px;
+}
+
+.subtitulo {
+   color: #0EC10E;
+   font-weight: bold;
+}
+
+p {
+   display: flex;
+   padding: 0%;
+   margin: 0%;
+   width: auto;
+}
+
+.contenedorGrid {
+   position: relative;
+   display: grid;
+   background-color: #ffffff;
+   margin: 3px;
+   grid-template-columns: 100px 250px 200px 170px 200px;
+   grid-column-start: 1;
+   grid-column-end: 5;
+   margin-bottom: 20px;
+}
+
+.contenedorGrid div {
+   margin: 2px;
+   background-color: #c9c8c9;
+   justify-items: center;
+   padding: 0px 5px;
+}
+
+a {
+   display: flex;
+   text-decoration: none;
+   color: black;
+   justify-items: center;
+   justify-content: center;
+}
+
+#valor {
+   display: flex;
+   justify-content: end;
+}
+
+#enlace {
+   display: flex;
+   justify-content: center;
+   justify-items: center;
+   cursor: pointer;
+}
+
+#enlace:hover {
+   transform: scale(110%);
+   background-color: #0EC10E;
+}
+
+#codigoPredio {
+   display: flex;
+   justify-content: center;
+   font-weight: bold;
+   font-size: 16;
+   color: #0EC10E;
+}
+
+#codigoPredio:hover {
+   transform: scale(110%);
+   background-color: #0EC10E;
+   color: #ffffff;
+}
+
+
+.containerMensaje {
+   position: relative;
+   width: 80%;
+   height: auto;
+   background-color: #0EC10E;
+   box-shadow: 0 4px 15px #252424;
+   border-radius: 12px;
+   margin-top: 100px;
+}
+
+#textoMensajeconsulta {
+   width: auto;
+   color: #000000;
+   font-size: 34px;
+   font-weight: bold;
+   text-align: center;
+}
+
+.imgversite {
+   width: 20px;
+   height: 20px;
+   transition: transform 0.5s ease;
+}
+
+.imgversite:hover {
+   transform: scale(120%);
+   background-color: #0EC10E;
+   border-radius: 10px;
+}
+
+@media (max-width:575px) {
+
+   #datosConsulta {
+      position: fixed;
+      display: block;
+      margin-top: 40px;
+   }
+
+   .contenedorGrid {
+      position: relative;
+      width: 85%;
+      margin-top: 230px;
+      grid-template-columns: auto auto auto auto auto;
+      justify-content: center;
+      font-size: 14px;
+   }
+
+   #textoMensajeconsulta {
+      margin-top: 200px;
+   }
+
+}

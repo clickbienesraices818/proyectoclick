@@ -1,0 +1,60 @@
+/* <style> */
+
+/* CSS GENERALES */
+:root {
+   --color-Titulonoticia: #0EC10E;
+   --color-Tarjetanoticia: #ffffff;
+}
+
+* {
+   box-sizing: border-box;
+}
+
+/* css generales */
+
+body {
+   font-family: 'fuenteCorporativa';
+   padding-top: 55px;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   background-color: #dddddd;
+   overflow-x: hidden;
+   max-width: 100%;
+   justify-items: center;
+}
+header {
+   margin: 0%;
+   position: relative;
+}
+
+main {
+   position: relative;
+   padding-top: 0%;
+   justify-content: center;
+   justify-items: center;
+   width: 90%;
+}
+
+.version {
+   font-size: 10px;   
+   color:  #ffffff;
+   margin: 0%;
+   padding: 0%;
+   z-index: 300;
+   width: 60px;
+   align-items: start;
+}
+
+.separador {
+   width: 100%;
+   height: 7px;
+   background-color: #0EC10E;
+}
+
+@font-face {
+    font-family: 'fuenteCorporativa';
+    src: url('../fuentes/29lt-bukra.ttf') format('truetype');
+}
+
+/*<style>

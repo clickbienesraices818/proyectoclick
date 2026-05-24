@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!---------- ARCHIVOS CSS------------------->
+
+	<link rel="stylesheet" href="../css/styleprediosconsolidado.css">
+
+
+	<!---------- SCRIPTS ------------------->
+
+
+	<title>Click Bienes Raices</title>
+</head>
+
+<body>
+
+	<!---------- TITULO ------------------->
+
+	<header id="encabezado">
+
+
+	</header>
+
+	<main>
+		<section class="tarjetaPredio">
+			<div class="tarjetaDatos">
+				<div class="tarjetaInformacion">
+					<div class="tituloInformacion">
+						<h1 class="tituloPredio"> Codigo Predio</h1>
+					</div>
+					<div class="detalleInformacion">
+						<p class="textoInformacion"> <span class="etiquetasInfo"> Prueba: </span> Asi queda bien</p>
+					</div>
+					<div class="areaDescripcion">
+						<details>
+							<summary class="tituloDescripcion">Descripcion</summary>
+							<p class="textoDescripcion">En Click Bienes Raices estamos seguros que encontrar el lugar
+								perfecto para vivir o invertir
+								debe ser un proceso sencillo que convierta esta experiencia en un momento emocionante lleno de
+								calidez. Por eso, estamos aquí para ser el puente confiable que conecta a las personas con sus
+								suenos. Nos apasiona acompanar a cada cliente en su camino, simplificando la venta y compra de
+								propiedades, ofreciendo una atención personalizada, cercana y de alta calidad.
+							</p>
+						</details>
+					</div>
+				</div>
+
+
+				<div class="tarjetaFotos">
+					<div class="detalleFotos" class="carrusel">
+						<img class="foto" src="https://lh3.googleusercontent.com/d/1qq9lzPFrPelAu1b853Hj6QJo2PLBYDZg">
+						<img class="foto" src="https://lh3.googleusercontent.com/d/1xOLtbTDDxsQpFQW-OjDJEcpsXGjoF6QW">
+						<img class="foto" src="https://lh3.googleusercontent.com/d/1y2vuHcTf7E7pEUyNy2NgbnNI1lueGO5Q">
+						<img class="foto" src="https://lh3.googleusercontent.com/d/1Muh9wMYo2G1OngnHVAshVeGnJrjfRy-L">
+						<img class="foto" src="https://lh3.googleusercontent.com/d/16GeaoQ_qrfc7-dK6-TnOQ6_1onHHAhgt">
+					</div>
+					<div class="tituloPrecio">
+						<h1> precio Predio</h1>
+					</div>
+					<div class="tarjetaVideopredio">
+						<details>
+							<summary class="tituloVideopredio">Video Predio</summary>
+							<div class="areaVideo">
+								<video controls width="200" height="300">
+									<source src="../videos_predios/RC009.mp4" type="video/mp4">
+								</video>
+							</div>
+						</details>
+					</div>
+				</div>
+
+				<div class="tarjetaCaracteristicas">
+					<details>
+						<summary class="tituloCarcateristicas">Características</summary>
+						<div class="listaCaracteristicas">
+							<li class="textoCaracteristica">Prueba 1</li>
+							<li class="textoCaracteristica">Prueba 2</li>
+						</div>
+					</details>
+				</div>
+				<div class="areaCopiarenlacepredio">
+					<a onclick="copiarenlace('botonEnlace')">
+						<img id="botonEnlace" class="botonEnlace" href="esta es una prueba" width="30px" height="30px"
+							src="../imagenes_site/enlace.png">
+					</a>
+					<p class="textoCopiarenlace">
+						Copiar Enlace
+					</p>
+				</div>
+
+			</div>
+
+		</section>
+	</main>
+
+	<!---------- PIE DE PAGINA ------------------->
+	<footer id="piepagina">
+
+	</footer>
+
+
+
+	<!---------- INSERTAR LA BARRA DEL MENU HOSTING ------------------->
+	<script>
+		fetch('barramenuhosting2nivel.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('encabezado').innerHTML = data;
+			});
+	</script>
+
+	<!---------- INSERTAR PIE DE PAGINA ------------------->
+	<script>
+		fetch('footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('piepagina').innerHTML = data;
+			});
+	</script>
+
+	<script>
+		function copiarenlace(varIDEnlace) {
+			// Obtener el campo de texto
+			const enlace = document.getElementById(varIDEnlace).getAttribute('href');
+
+			// Copiar el texto dentro del campo
+			navigator.clipboard.writeText(enlace)
+				.then(() => alert('Enlace copiado: ' + varIDEnlace + " " + enlace))
+		}
+	</script>
+
+</body>
+
+</html>

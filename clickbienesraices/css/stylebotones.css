@@ -1,0 +1,52 @@
+/* css botones opciones */
+
+.seccionbotones {
+   position: relative;
+   width: 100%;
+   height: auto;
+   margin: 30px;
+   justify-content: center;
+   justify-items: center;
+}
+
+.divbotones {
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   justify-content: center;
+   justify-items: center;
+   align-items: center;
+}
+
+button {
+   padding: 20px 0px;
+   width: 250px;
+   font-size: 14px;
+   text-decoration: none;
+   cursor: pointer;
+   background-color: #000000;
+   color: white;
+   border: none;
+   border-radius: 20px;
+   transition: background 0.3s;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 15px;
+}
+
+button:hover {
+   background-color: #0EC10E;
+   color: white;
+   transform: scale(1.02);
+}
+
+.imgboton {
+   width: 30px;
+   height: 30px;
+   align-items: center;
+   object-fit: contain;
+
+}

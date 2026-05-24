@@ -1,0 +1,171 @@
+/* <style>*/
+
+/*  CSS FOOTER */
+
+footer {
+   position: relative;
+   width: 100%;
+   height: auto;
+   box-shadow: 2px 2px 10px #000000;
+   background-color: #000000;
+   gap: 30px;
+   display: flex;
+   justify-content: center;
+   border-radius: 10px;
+   padding-top: 10px;
+}
+
+.cuadrocontacto {
+   width: 60%;
+   height: auto;
+   background-color: #000000;
+   font-size: 14px;
+   gap: 30px;
+   display: inline-flex;
+   justify-content: center;
+   justify-items: center;
+   font-family: 'fuenteCorporativa';
+   margin-bottom: 10px;
+   margin-left: 10px;
+}
+
+.cuadroredes {
+   width: 30%;
+   height: auto;
+   background-color: #000000;
+   font-size: 14px;
+   align-items: center;
+   gap: 30px;
+   display: inline-flex;
+   justify-content: center;
+   margin-bottom: 10px;
+   margin-right: 40px;
+}
+
+.imgcontacto {
+   width: 30px;
+   height: 30px;
+   transition: transform 0.5s ease;
+}
+
+.imgcontacto:hover {
+   transform: scale(120%);
+   background-color: #0EC10E;
+   border-radius: 10px;
+}
+
+#telefonoContacto {
+   display: flex;
+   text-decoration: none;
+   color: white;
+   align-items: center;
+}
+
+#enviarcorreo {
+   text-decoration: none;
+   color: white;
+}
+
+.informacionfooter {
+   align-items: center;
+   display: flex;
+   gap: 7px;
+   padding-bottom: 10px;
+   color: white;
+   justify-content: center;
+   transition: transform 0.5s ease;
+}
+
+.informacionfooter:hover {
+   transform: scale(110%);
+   background-color: #0EC10E;
+   border-radius: 10px;
+
+}
+
+#textoNombre {
+   color: #FFFFFF;
+   margin: 0%;
+}
+
+/* CONTACTANOS FLOTANTE  */
+
+.areaContactoflotante {
+   position: fixed;
+   top: 50%;
+   right: 10px;
+   z-index: 2000;
+   display: flex;
+   flex-direction: column;
+   margin: 0%;
+   align-items: center;
+   padding: 0%;
+}
+
+.textoContactoflotante {
+   font-size: 10px;
+   font-weight: bold;
+   margin: 0%;
+   color: #0EC10E;
+   padding: 0%;
+}
+
+.telefonoWasap {
+   margin: 0%;
+   width: 30px;
+   height: 30px;
+}
+
+.imgWasap {
+   width: 30px;
+   height: 30px;
+   transition: transform 0.5s ease;
+}
+
+.imgWasap:hover {
+   transform: scale(150%);
+   background-color: #0EC10E;
+   border-radius: 12px;
+}
+
+.imgTelefono {
+   width: 30px;
+   height: 30px;
+   transition: transform 0.5s ease;
+}
+
+.imgTelefono:hover {
+   transform: scale(150%);
+   background-color: #0EC10E;
+   border-radius: 12px;
+}
+
+
+/* CSS RESPONSIVE */
+@media (max-width:575px) {
+
+   /* REPONSIVE FOOTER */
+   footer {
+      justify-items: center;
+      height: auto;
+      display: block;
+   }
+
+   .cuadrocontacto {
+      display: block;
+      justify-content: center;
+      height: auto;
+      padding: 0%;
+      width: 80%;
+   }
+
+   .cuadroredes {
+      display: flex;
+      height: auto;
+      margin: 0%;
+      padding: 0%;
+      width: 80%;
+   }
+}
+
+/* </style> */

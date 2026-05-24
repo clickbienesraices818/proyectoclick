@@ -1,0 +1,390 @@
+<!---------- HEADER ------------------->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            justify-items: center;
+        }
+
+        main {
+            margin-top: 80px;
+            width: 100%;
+            justify-items: center;
+        }
+
+        /* CSS BARRA MENU */
+        .barramenu {
+            position: fixed;
+            width: 100%;
+            height: auto;
+            background-color: #000000;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            gap: 40px;
+            box-shadow: 0 0 25px #ffffff;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 10px 0px;
+        }
+
+        .arealogo {
+            position: relative;
+            width: 30%;
+            background-color: rgb(0, 0, 0);
+            margin: 0%;
+        }
+
+        #imglogo {
+            width: 100px;
+            height: 55px;
+            padding: 0%;
+            justify-content: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu {
+            width: 60%;
+            height: auto;
+            list-style: none;
+            background-color: #000000;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        .menu li {
+            width: auto;
+            position: relative;
+            display: inline-block;
+            background-color: rgb(255, 255, 255);
+            transition: background 0.3s;
+            /*box-shadow: 2px 2px 10px #fcf9f9;*/
+            border-radius: 12px;
+            padding: 0px 15px;
+            margin-right: 10px;
+        }
+
+        .menu li:hover {
+            background-color: #0EC10E;
+            font-style: italic;
+            transform: scale(1.02);
+        }
+
+        .menu li:hover ul {
+            /* tajeta de los submenu */
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            font-style: normal;
+            border-radius: 0%;
+            padding: 0%;
+            background-color: #ffffff;
+
+        }
+
+        .menu li a {
+            width: 100%;
+            text-decoration: none;
+            padding: 0px;
+        }
+
+        .menu ul {
+            width: 200px;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0%;
+            background-color: #ffffff;
+            z-index: 10;
+        }
+
+        .menu ul li a {
+            /* opciones del submenu */
+            width: auto;
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #000000;
+            width: auto;
+            background-color: #ffffff;
+            line-height: 0.5;
+        }
+
+        .menu ul li a:hover {
+            /* hover de las opciones de los submenu */
+            background-color: #0EC10E;
+            color: #ffffff;
+            font-style: normal;
+        }
+
+        .opcionmenu {
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-texoopcionmenu);
+            padding: 0%;
+        }
+
+
+        .opcionsubmenu {
+            font-size: 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-texoopcionsubmenu);
+            border-radius: 0%;
+        }
+
+        .btnopcion {
+            border-radius: 0%;
+        }
+
+        @media (max-width:575px) {
+
+            .barramenu {
+                position: absolute;
+                width: 100%;
+                height: auto;
+                display: block;
+                justify-content: center;
+                justify-items: center;
+            }
+
+            .menu {
+                margin: 0%;
+                display: flex;
+                padding: 0%;
+                width: 100%;
+            }
+
+            .arealogo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .menu li {
+                width: auto;
+                display: block;
+                margin: 0%;
+                gap: 0%;
+                padding: 5px;
+            }
+
+            .menu li a {
+                display: flex;
+                padding: 0%;
+            }
+
+            .opcionmenu {
+                font-size: 12px;
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .menu li:hover ul {
+                /* tajeta de los submenu */
+                width: auto;
+                display: flex;
+                background-color: #ffffff;
+            }
+        }
+
+        /* CSS TITULO */
+
+        header {
+            width: 95%;
+        }
+
+        #areatitulos {
+            width: 100%;
+            height: auto;
+            background-color: #000000;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px #000000;
+            justify-items: center;
+            justify-content: center;
+            display: flex;
+            padding: 5px;
+        }
+
+        #textotitulos {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: auto;
+            font-size: 40px;
+            color: white;
+            display: flex;
+            margin: 0;
+        }
+
+        #imgregresar {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            left: 50px;
+            margin: 13px;
+        }
+
+        @media (max-width:450px) {
+            #textotitulos {
+                font-size: 20px;
+            }
+
+            #imgregresar {
+                position: absolute;
+                width: 35px;
+                height: 35px;
+                left: 50px;
+                margin: 13px;
+                display: none;
+            }
+
+            header {
+                width: 90%;
+                justify-items: center;
+                justify-content: center;
+                align-items: center;
+                display: inline-block;
+                margin-bottom: 0%;
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!----------TITULO ------------------->
+    <header id="encabezado">
+        <!---------- BARRA MENU ------------------->
+        <nav class=barramenu>
+            <div class="arealogo">
+                <a> <img id="imglogo" src="https://drive.google.com/thumbnail?id=1AdYq-yd8aNcbB3k0pM_Im-GYtaXNK_NS"></a>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a class="opcionmenu" href="../../index.html">Inicio
+                    </a>
+                </li>
+
+                <li class="contenedorsubmenu">
+                    <a class="opcionmenu" href="../ofertas-urbanas.html">Ofertas Urbanas</a>
+                    <ul>
+                        <li class="btnopcion">
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/apartaestudios">Apartaestudios</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/apartamentos">Apartamentos</a>
+                        </li>
+                        <li class="btnopcion">
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/casas">Casas</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/casas-campestres">Casas
+                                Campestres</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/conjuntos-cerrados">Casas
+                                Conjuntos Cerrados</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/casas-comerciales-edificios">Casas
+                                Comerciales-Edificios</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/oficinas-locales-consultorios">Oficinas-Locales-Consultorios</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/proyectos-urbanos">Proyectos
+                                Urbanos</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/bodegas">Bodegas</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-urbanas/lotes-urbanos">Lotes
+                                Urbanos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="contenedorsubmenu">
+                    <a class="opcionmenu" href="../ofertas-rurales.html">Ofertas Rurales</a>
+                    <ul>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-rurales/casas-campestres">Casas
+                                Campestres</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-rurales/fincas">Finca</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-rurales/temperaderos-cabanas">Temperaderos
+                                y Cabanas</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-rurales/lotes-rurales">Lotes
+                                Rurales</a>
+                        </li>
+                        <li>
+                            <a class="opcionsubmenu"
+                                href="https://sites.google.com/view/clickbienesraices/ofertas-rurales/proyectos-rurales">Proyectos
+                                Rurales</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="opcionmenu" href="../noticiasfijo.html">Noticias
+                    </a>
+                </li>
+                <li>
+                    <a class="opcionmenu" href="https://sites.google.com/view/clickbienesraices/buscar">Buscar Predios
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <title id="titulopestana"> </title>
+    </header>
+
+    <main>
+        <div id="areatitulos">
+            <h1 id="textotitulos">
+
+            </h1>
+            <a href="https://clickbienesraices.com.co/html/ofertas-urbanas.html">
+                <img id="imgregresar" src="https://drive.google.com/thumbnail?id=1LE3Fx9ppqN0t6RAvSwVTE9x9GMLV0-1v">
+            </a>
+        </div>
+    </main>
+
+    <!---------- DEFINIR EL TITULO ------------------->
+    <script>
+        const CATEGORIA = "PRUEBA";
+        document.getElementById("textotitulos").innerText = CATEGORIA;
+        document.getElementById("titulopestana").innerText = CATEGORIA;
+    </script>
+</body>
+
+</html>

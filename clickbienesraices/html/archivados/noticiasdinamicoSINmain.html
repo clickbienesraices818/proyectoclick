@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!--------- INTERES -------------------->
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--------- STYLES -------------------->
+   <link rel="stylesheet" href="../css/stylenoticiasconsolidado.css">
+
+   <!--------- SCRIPTS -------------------->
+
+
+   <script src="../js/credencialesgoogleapi.js"></script>
+   <script src="../js/visualizarnoticias.js" defer></script>
+
+	<!---------- NO TOCAR ------------------->
+	<script async defer src="https://apis.google.com/js/api.js" id="gapi"></script>
+	<script async defer src="https://accounts.google.com/gsi/client" id="gis"></script>
+	<!---------- NO TOCAR ------------------->
+
+   <script async defer src="../js/cargardatosnoticias.js"></script>
+
+   <title>  Noticias y Temas de Inetres</title>
+</head>
+
+<body>
+   <!---------- IMAGEN DE CANVA ------------------->
+   <section id="seccionbanner">
+      <div>
+         <img id="imagenbanner" src="https://lh3.googleusercontent.com/d/18P8NpX-5699j2dxLDvb1MVSYhSGqS_j9">
+      </div>
+   </section>
+
+   <!---------- TITULO ------------------->
+
+   <header id="encabezado">
+
+   </header>
+
+   <main>
+
+      
+   </main>
+   <!---------- FOOTER --------->
+   <footer id="piepagina">
+
+   </footer>
+
+   <script src="../js/conexionapinoticiasMO.js"></script>
+
+       <!---------- INSERTAR LA BARRA DEL MENU HOSTING ------------------->
+    <script>
+        fetch('otros/barramenuhosting2nivel.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('encabezado').innerHTML = data;
+            });
+    </script>
+
+    <!---------- INSERTAR PIE DE PAGINA ------------------->
+    <script>
+        fetch('html/otros/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('piepagina').innerHTML = data;
+            });
+    </script>
+
+</body>
+
+</html>
