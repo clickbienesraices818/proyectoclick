@@ -1,14 +1,14 @@
 <?php
 
 // Validar si se solicitó la acción específica
-if (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarPredios')
+ if (isset($_POST['actualizarPredios']))
     actualizarPredios();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCaracteristicas')
+elseif (isset($_POST['actualizarCaracteristicas']))
     actualizarCaracteristicas();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarImagenes')
+elseif (isset($_POST['actualizarImagenes']))
     actualizarImagenes();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCategorias')
-    actualizarCategorias();
+elseif (isset($_POST['actualizarCategorias']))
+    actualizarCategorias(); 
 
 //---------------------------------------------------
 
@@ -36,12 +36,13 @@ function actualizarPredios()
     $range = "PR Predios Exportar!A3:R1000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varpredios = $response->getValues();
-    $varcantidad = count($varpredios);
+    $varcantidad = 0;
 
     if (!empty($varpredios)) {
         foreach ($varpredios as $Predio) {
             if (($Predio[1] != "Inactivo") && ($Predio[14] = "TRUE")) {
 
+                $varcantidad++;
                 $varcodigopredio = $Predio[0];
                 $varestado = $Predio[1];
                 $vartipo = $Predio[2];
@@ -80,13 +81,15 @@ function actualizarPredios()
     mysqli_close($conexion);
 
 
-    echo "Se Procesaron: " . $varcantidad . "  Predios";
+    echo "<p> Se procesaron:   $varcantidad   Predios </p> ";
 };
 
 
 // --------------    ACTUALIZAR LAS CARACTERISTICAS DE LOS PREDIOS
 function actualizarCaracteristicas()
 {
+    set_time_limit(0);
+
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
     include 'conexionBDHosting.php';
 
@@ -104,15 +107,16 @@ function actualizarCaracteristicas()
     /* TRAER LAS CARACTERISTICAS DE LOS PREDIOS DESDE GOOGLE SHEETS
         Y SUBIRLOS A LA BASE DE DATOS */
 
-    $range = "PR Caracteristicas Exportar!A2:E10000"; // Rango a leer
+    $range = "PR Caracteristicas Exportar!A2:F10000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varcaracteristicas = $response->getValues();
-    $varcantidad = count($varcaracteristicas);
+    $varcantidad = 0;
 
     if (!empty($varcaracteristicas)) {
         foreach ($varcaracteristicas as $Caracteristica) {
-            if (!empty([$Caracteristica[0]])) {
+            if (!empty([$Caracteristica[0]]) && [$Caracteristica[5]] === "TRUE") {
 
+                $varcantidad++;
                 $varcodigopredio = $Caracteristica[0];
                 $varcaracteristica = $Caracteristica[1];
                 $varvalor = $Caracteristica[2];
@@ -132,13 +136,14 @@ function actualizarCaracteristicas()
     // CERRAR LA CONEXION
     mysqli_close($conexion);
 
-    echo "Se Procesaron: " . $varcantidad . "  Caracteristicas";
+    echo "<p> Se procesaron:   $varcantidad   Caracteristicas </p> ";
 };
 
 //---------------------------------------------------------------------------
 //    ACTUALIZAR LAS BD IMAGENES
 function actualizarImagenes()
 {
+    set_time_limit(0);
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
     include 'conexionBDHosting.php';
 
@@ -156,23 +161,27 @@ function actualizarImagenes()
         Y SUBIRLOS A LA BASE DE DATOS */
 
 
-    $range = "PR Imagenes Exportar!A2:F10000"; // Rango a leer
+    $range = "PR Imagenes Exportar!A2:G10000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varimagenes = $response->getValues();
-    $varcantidad = count($varimagenes);
+    $varcantidad = 0;
 
     if (!empty($varimagenes)) {
         foreach ($varimagenes as $Imagen) {
-            if (!empty([$Imagen[0]])) {
-
+            if (!empty([$Imagen[0]]) && [$Imagen[6]] === "TRUE") {
+                
+                $varcantidad++;
                 $varcodigopredio = $Imagen[0];
                 $varnombreimagen = $Imagen[1];
-                $vararchivoimagen = $Imagen[2];
-                $varcodigocategoria = $Imagen[3];
+                $varredes = $Imagen[2];
+                $vararchivoimagen = $Imagen[3];
+                $varcodigocategoria = $Imagen[4];
+                $varorden = $Imagen[5];
 
-                $sqlimagenes = "INSERT INTO pr_imagenes (Codigo_Predio, Nombre_Imagen, 
-                                            Archivo_Imagen, Codigo_Categoria)
-                                VALUES ('$varcodigopredio', '$varnombreimagen', '$vararchivoimagen', '$varcodigocategoria')";
+                $sqlimagenes = "INSERT INTO pr_imagenes (Codigo_Predio, Nombre_Imagen, Redes,
+                                            Archivo_Imagen, Codigo_Categoria, Orden)
+                                VALUES ('$varcodigopredio', '$varnombreimagen', '$varredes', 
+                                '$vararchivoimagen', '$varcodigocategoria', '$varorden')";
 
                 $imagenesTotal = $conexion->query($sqlimagenes);
             };
@@ -182,7 +191,7 @@ function actualizarImagenes()
     // CERRAR LA CONEXION
     mysqli_close($conexion);
 
-    echo "Se Procesaron: " . $varcantidad . "  Imagenes";
+    echo "<p> Se procesaron:   $varcantidad   Imagenes </p> ";
 };
 
 
@@ -190,6 +199,7 @@ function actualizarImagenes()
 //    ACTUALIZAR LAS BD CATEGORIAS
 function actualizarCategorias()
 {
+
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
     include 'conexionBDHosting.php';
 
@@ -210,16 +220,22 @@ function actualizarCategorias()
     $range = "PR Categorias Exportar!A2:F10000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varcategorias = $response->getValues();
-    $varcantidad = count($varcategorias);
+    $vartotalregistros = count($varcategorias);
+    $varcantidad = 0;
 
     if (!empty($varcategorias)) {
         foreach ($varcategorias as $categoria) {
             if (!empty([$categoria[0]])) {
 
+                $varcantidad++;
                 $varcodigocategoria = $categoria[0];
                 $varcategoria = $categoria[1];
-                $varcategoriaredes = $categoria[1];
-                $varimagen = $categoria[1];
+                $varcategoriaredes = $categoria[2];
+                $varimagen = $categoria[3];
+
+                $varprogreso = ( $varcantidad / $vartotalregistros ) * 100;
+
+                echo "<p class='mensajeProceso'> Procesando :" .  $varcategoria . "</p>";
 
                 $sqlcategorias = "INSERT INTO pr_categorias (Codigo_Categoria, Categoria, 
                                             Categoria_Redes, Imagen)
@@ -233,7 +249,7 @@ function actualizarCategorias()
     // CERRAR LA CONEXION
     mysqli_close($conexion);
 
-    echo "Se Procesaron: " . $varcantidad . "  categorias";
+    echo "<p> Se procesaron:   $varcantidad   categorias </p> ";
 };
 
 
@@ -250,3 +266,6 @@ $params = [
 ];
 $result = $service->spreadsheets_values->update($spreadsheetId, $rangeToWrite, $body, $params);
 echo "Datos insertados correctamente."; */
+
+?>
+

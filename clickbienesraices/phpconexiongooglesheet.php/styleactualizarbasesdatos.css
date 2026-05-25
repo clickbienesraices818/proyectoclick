@@ -1,0 +1,89 @@
+* {
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'fuenteCorporativa';
+   padding-top: 55px;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   background-color: #dddddd;
+   overflow-x: hidden;
+   max-width: 100%;
+   justify-items: center;
+}
+
+.seccionPrincipal {
+   position: relative;
+   display: block;
+   width: 80%;
+   height: 400px;
+   justify-items: center;
+   background-color: rgb(255, 255, 255);
+   align-content: center;
+
+}
+
+.areaFromulario {
+   position: relative;
+   width: 80%;
+   height: auto;
+   display: flex;
+   justify-content: space-between;
+}
+
+.botonOpcion {
+   background-color: #0EC10E;
+   color: black;
+   font-family: 'fuenteCorporativa';
+   padding: 15px;
+   border-radius: 15px;
+   border-color: #dddddd;
+   font-size: 16px;
+}
+
+.mensajeProceso {
+   background-color: #0EC10E;
+   color: #ffffff;
+}
+
+/* BARRA PROGRESO */
+
+.contenedor {
+   text-align: center;
+   width: 80%;
+   max-width: 500px;
+}
+
+/* Contenedor gris de la barra */
+.barra-fondo {
+   width: 100%;
+   background-color: #e0e0e0;
+   border-radius: 25px;
+   padding: 3px;
+   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Barra de color que se llena */
+.barra-progreso {
+   /* Usamos PHP para inyectar el ancho dinámicamente */
+   width: <?php echo $progreso;
+   ?>%;
+   height: 25px;
+   background-color: #4caf50;
+   border-radius: 20px;
+   transition: width 0.5s ease-in-out;
+}
+
+.texto {
+   font-size: 18px;
+   font-weight: bold;
+   color: #333;
+   margin-bottom: 10px;
+}
+
+@font-face {
+   font-family: 'fuenteCorporativa';
+   src: url('../fuentes/29lt-bukra.ttf') format('truetype');
+}
