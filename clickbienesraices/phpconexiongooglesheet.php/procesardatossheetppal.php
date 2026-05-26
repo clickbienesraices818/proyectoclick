@@ -9,7 +9,8 @@ elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarImagenes')
     actualizarImagenes();
 elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCategorias')
     actualizarCategorias();
-
+elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarNoticias')
+    actualizarNoticias();
 //---------------------------------------------------
 
 function actualizarPredios()
@@ -18,7 +19,7 @@ function actualizarPredios()
     include 'conexionBDHosting.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
-    include  'conexiongooglesheet.php';
+    include  'conexiongooglesheetpredios.php';
 
     //-------------------------------------
     // BORRA LA TABLA DE PREDIOS
@@ -36,12 +37,13 @@ function actualizarPredios()
     $range = "PR Predios Exportar!A3:R1000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varpredios = $response->getValues();
-    $varcantidad = count($varpredios);
+    $varregtotal = count($varpredios);
+    $varregprocesados = 0;
 
     if (!empty($varpredios)) {
         foreach ($varpredios as $Predio) {
             if (($Predio[1] != "Inactivo") && ($Predio[14] = "TRUE")) {
-
+                $varregprocesados++;
                 $varcodigopredio = $Predio[0];
                 $varestado = $Predio[1];
                 $vartipo = $Predio[2];
@@ -80,7 +82,7 @@ function actualizarPredios()
     mysqli_close($conexion);
 
 
-    echo "Se Procesaron: " . $varcantidad . "  Predios";
+    echo "Se Procesaron: " . $varregprocesados . "  Predios";
 };
 
 
@@ -93,7 +95,7 @@ function actualizarCaracteristicas()
     include 'conexionBDHosting.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
-    include  'conexiongooglesheet.php';
+    include  'conexiongooglesheetpredios.php';
 
     
     //------------------------------------------------------------------
@@ -109,12 +111,13 @@ function actualizarCaracteristicas()
     $range = "PR Caracteristicas Exportar!A2:F10000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varcaracteristicas = $response->getValues();
-    $varcantidad = count($varcaracteristicas);
+    $varregtotal = count($varcaracteristicas);
+    $varregprocesados = 0;
 
     if (!empty($varcaracteristicas)) {
         foreach ($varcaracteristicas as $Caracteristica) {
-            if (!empty([$Caracteristica[0]]) && [$Caracteristica[5]] === "TRUE") {
-
+            if (!empty([$Caracteristica[0]]) && $Caracteristica[5] === "TRUE") {
+                $varregprocesados++;
                 $varcodigopredio = $Caracteristica[0];
                 $varcaracteristica = $Caracteristica[1];
                 $varvalor = $Caracteristica[2];
@@ -134,7 +137,7 @@ function actualizarCaracteristicas()
     // CERRAR LA CONEXION
     mysqli_close($conexion);
 
-    echo "Se Procesaron: " . $varcantidad . "  Caracteristicas";
+    echo "Se Procesaron: " . $varregprocesados . "  Caracteristicas";
 };
 
 //---------------------------------------------------------------------------
@@ -146,7 +149,7 @@ function actualizarImagenes()
     include 'conexionBDHosting.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
-    include  'conexiongooglesheet.php';
+    include  'conexiongooglesheetpredios.php';
 
     // BORRA LA TABLA DE IMAGENES
     $sqlimagenes = "DELETE
@@ -162,12 +165,13 @@ function actualizarImagenes()
     $range = "PR Imagenes Exportar!A2:G10000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varimagenes = $response->getValues();
-    $varcantidad = count($varimagenes);
+    $varregtotal = count($varimagenes);
+    $varregprocesados = 0;
 
     if (!empty($varimagenes)) {
         foreach ($varimagenes as $Imagen) {
-            if (!empty([$Imagen[0]]) && [$Imagen[6]] === "TRUE") {
-
+            if (!empty([$Imagen[0]]) && $Imagen[6] === 'TRUE') {
+                $varregprocesados++;
                 $varcodigopredio = $Imagen[0];
                 $varnombreimagen = $Imagen[1];
                 $vararchivoimagen = $Imagen[2];
@@ -185,7 +189,7 @@ function actualizarImagenes()
     // CERRAR LA CONEXION
     mysqli_close($conexion);
 
-    echo "Se Procesaron: " . $varcantidad . "  Imagenes";
+    echo "Se Procesaron: " . $varregprocesados . "  Imagenes";
 };
 
 
@@ -197,9 +201,9 @@ function actualizarCategorias()
     include 'conexionBDHosting.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
-    include  'conexiongooglesheet.php';
+    include  'conexiongooglesheetpredios.php';
 
-    // BORRA LA TABLA DE IMAGENES
+    // BORRA LA TABLA DE CATEGORIAS
     $sqlcategorias = "DELETE
       FROM pr_categorias";
 
@@ -213,12 +217,13 @@ function actualizarCategorias()
     $range = "PR Categorias Exportar!A2:F10000"; // Rango a leer
     $response = $service->spreadsheets_values->get($spreadsheetId, $range);
     $varcategorias = $response->getValues();
-    $varcantidad = count($varcategorias);
+    $varregtotal = count($varcategorias);
+    $varregprocesados = 0;
 
     if (!empty($varcategorias)) {
         foreach ($varcategorias as $categoria) {
             if (!empty([$categoria[0]])) {
-
+                $varregprocesados++;
                 $varcodigocategoria = $categoria[0];
                 $varcategoria = $categoria[1];
                 $varcategoriaredes = $categoria[2];
@@ -236,7 +241,68 @@ function actualizarCategorias()
     // CERRAR LA CONEXION
     mysqli_close($conexion);
 
-    echo "Se Procesaron: " . $varcantidad . "  categorias";
+    echo "Se Procesaron: " . $varregprocesados . "  categorias";
+};
+
+
+//---------------------------------------------------------------------------
+//    ACTUALIZAR LAS BD NOTICIAS
+function actualizarNoticias()
+{
+    // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
+    include 'conexionBDHosting.php';
+
+    //LLAMADO A LA CONEXION CON GOOGLESHEET
+    include  'conexiongooglesheetnoticias.php';
+
+    // BORRA LA TABLA DE IMAGENES
+    $sqlnoticias = "DELETE
+      FROM ne_noticias";
+
+    $noticiasTotal = $conexion->query($sqlnoticias);
+
+    //------------------------------------------------------------------
+    /* TRAER LAS NOTICIAS  DESDE GOOGLE SHEET
+        Y SUBIRLOS A LA BASE DE DATOS */
+
+
+    $range = "NE Noticias Exportar!A2:I1000"; // Rango a leer
+    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+    $varnoticias = $response->getValues();
+    $varregtotal = count($varnoticias);
+    $varregprocesados = 0;
+
+    if (!empty($varnoticias)) {
+        foreach ($varnoticias as $noticia) {
+
+            if (!empty([$noticia[0]]) && $noticia[8] === "TRUE") {
+                $varregprocesados++;
+                $varidnoticia = $noticia[0];
+                $varfechapublicar = $noticia[1];
+                $varfechadesmontar = $noticia[2];
+                $vartitulo = $noticia[3];
+                $varcontenido = $noticia[4];
+                $varleermas = $noticia[5];
+                $varcreditos = $noticia[6];
+                $varimagen = $noticia[7];
+                $varactivo = $noticia[8];
+
+                
+                $sqlnoticias = "INSERT INTO ne_noticias (ID_Noticia, Fecha_Publicar, Fecha_Desmontar,
+                                            Titulo, Contenido, Leer_Mas, Creditos, Imagen, Activo)
+                                VALUES ('$varidnoticia', '$varfechapublicar', '$varfechadesmontar', 
+                                        '$vartitulo', '$varcontenido', '$varleermas', '$varcreditos',
+                                        '$varimagen', '$varactivo')";
+
+                $noticiasTotal = $conexion->query($sqlnoticias);
+            };
+        };
+    };
+
+    // CERRAR LA CONEXION
+    mysqli_close($conexion);
+
+    echo "Se Procesaron: " . $varregprocesados . "  noticias";
 };
 
 

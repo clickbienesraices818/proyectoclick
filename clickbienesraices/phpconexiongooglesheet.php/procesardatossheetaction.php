@@ -9,7 +9,8 @@ elseif (isset($_POST['actualizarImagenes']))
     actualizarImagenes();
 elseif (isset($_POST['actualizarCategorias']))
     actualizarCategorias(); 
-
+elseif (isset($_POST['actualizarNoticias']))
+    actualizarNoticias(); 
 //---------------------------------------------------
 
 function actualizarPredios()
