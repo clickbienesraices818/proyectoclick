@@ -174,12 +174,15 @@ function actualizarImagenes()
                 $varregprocesados++;
                 $varcodigopredio = $Imagen[0];
                 $varnombreimagen = $Imagen[1];
-                $vararchivoimagen = $Imagen[2];
-                $varcodigocategoria = $Imagen[3];
+                $varredes = $Imagen[2];
+                $vararchivoimagen = $Imagen[3];
+                $varcodigocategoria = $Imagen[4];
+                $varorden = $Imagen[5];
 
-                $sqlimagenes = "INSERT INTO pr_imagenes (Codigo_Predio, Nombre_Imagen, 
-                                            Archivo_Imagen, Codigo_Categoria)
-                                VALUES ('$varcodigopredio', '$varnombreimagen', '$vararchivoimagen', '$varcodigocategoria')";
+                $sqlimagenes = "INSERT INTO pr_imagenes (Codigo_Predio, Nombre_Imagen, Redes,
+                                            Archivo_Imagen, Codigo_Categoria, Orden)
+                                VALUES ('$varcodigopredio', '$varnombreimagen', '$varredes', 
+                                '$vararchivoimagen', '$varcodigocategoria', '$varorden')";
 
                 $imagenesTotal = $conexion->query($sqlimagenes);
             };

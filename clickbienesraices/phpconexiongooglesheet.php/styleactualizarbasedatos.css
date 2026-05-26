@@ -20,17 +20,26 @@ body {
    width: 80%;
    height: 400px;
    justify-items: center;
-   background-color: rgb(255, 255, 255);
+   background-color: #19015c;
    align-content: center;
 
 }
 
+.areaTitulo {
+   width: 80%;
+   background-color: #000000;
+   margin: 40px 20px;
+   box-shadow: 0 0 25px #ffffff;
+}
+
 .textoTitulo {
    font-size: 30px;
-   background-color: #0EC10E;
    color: #ffffff;
    padding: 10px;
    border-radius: 15px;
+   text-align: center;
+   font-family: 'fuenteCorporativa';
+   font-weight: bold;
 }
 
 .areaFromulario {
@@ -61,11 +70,22 @@ body {
    font-weight: bold;
 }
 
+.botonOpcion:hover {
+   background-color: #ffffff;
+   color: #000000;
+   font-family: 'fuenteCorporativa';
+   padding: 15px;
+   border-radius: 15px;
+   border-color: #dddddd;
+   font-size: 16px;
+   font-weight: bold;
+}
+
 .areaMensaje {
    width: 60%;
    position: relative;
-   margin: 30px 0px;
-   background-color: #000000;
+   margin: 50px 0px;
+   background-color: #d6d6d6;
    padding: 10px 20px;
    border-radius: 60px;
    border-color: #ffffff;
@@ -74,7 +94,7 @@ body {
 
 .textoMensaje {
    font-size: 30px;
-   color: #ffffff;
+   color: #000000;
    margin: 0%;
    text-align: center;
 }

@@ -20,8 +20,9 @@
 
 <body>
    <section class="seccionPrincipal">
-
-      <p class="textoTitulo">ACTUALIZACION TABLAS BASE DE DATOS</p>
+      <div class="areaTitulo">
+         <p class="textoTitulo">ACTUALIZACION TABLAS BASE DE DATOS SITE</p>
+      </div>
 
       <div class="areaBotonesopciones">
          <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Predios')">Tabla Predios</button>
@@ -52,8 +53,8 @@
             const texto = await respuesta.text();
 
             // Muestra lo que devuelve el archivo PHP
-            
-            var vartextoMensaje = document.getElementById("areaMensaje").style.backgroundColor = "blue";
+
+            var vartextoMensaje = document.getElementById("areaMensaje").style.backgroundColor = "yellow";
             var vartextoMensaje = document.getElementById("textoMensaje").innerText = texto;
 
 
