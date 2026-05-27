@@ -12,29 +12,44 @@
             <li class="contenedorsubmenu">
                   <a class="opcionmenu" href="ofertas-urbanas.php">Ofertas Urbanas</a>
                   <ul>
-                        <?php 
-                              foreach ($arraycategoriasurbanas as $categoria) {
-                                    $varcategoriamenu = $categoria["Categoria"];
-                                    $varcodigocategoria = $categoria["Codigo_Categoria"];
-                                    echo "<li class='btnopcion'>
+                        <?php
+                        foreach ($arraycategoriasurbanas as $categoria) {
+                              $varcategoriamenu = $categoria["Categoria"];
+                              $varcodigocategoria = $categoria["Codigo_Categoria"];
+                              echo "<li class='btnopcion'>
                                           <a class='opcionsubmenu' href='desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> </li>";
-                              };
+                        };
                         ?>
                   </ul>
             </li>
             <li class="contenedorsubmenu">
                   <a class="opcionmenu" href="ofertas-rurales.php">Ofertas Rurales</a>
                   <ul>
-                        <?php 
-                              foreach ($arraycategoriasrurales as $categoria) {
-                                    $varcategoriamenu = $categoria["Categoria"];
-                                    $varcodigocategoria = $categoria["Codigo_Categoria"];
-                                    echo "<li class='btnopcion'>
+                        <?php
+                        foreach ($arraycategoriasrurales as $categoria) {
+                              $varcategoriamenu = $categoria["Categoria"];
+                              $varcodigocategoria = $categoria["Codigo_Categoria"];
+                              echo "<li class='btnopcion'>
                                           <a class='opcionsubmenu' href='desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> </li>";
-                              };
+                        };
                         ?>
                   </ul>
             </li>
+
+            <li class="contenedorsubmenu">
+                  <a class="opcionmenu" href="ofertas-suburbanas.php">Ofertas Suburbanas</a>
+                  <ul>
+                        <?php
+                        foreach ($arraycategoriassuburbanas as $categoria) {
+                              $varcategoriamenu = $categoria["Categoria"];
+                              $varcodigocategoria = $categoria["Codigo_Categoria"];
+                              echo "<li class='btnopcion'>
+                                          <a class='opcionsubmenu' href='desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> </li>";
+                        };
+                        ?>
+                  </ul>
+            </li>
+
             <li>
                   <a class="opcionmenu" href="desplegarnoticias.php?idnoticia=TODAS">Noticias
                   </a>
@@ -45,4 +60,3 @@
             </li>
       </ul>
 </nav>
-

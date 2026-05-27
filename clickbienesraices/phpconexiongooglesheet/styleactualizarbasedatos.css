@@ -3,16 +3,19 @@
 }
 
 body {
-   font-family: 'fuenteCorporativa';
-   padding-top: 55px;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   background-color: #dddddd;
-   overflow-x: hidden;
-   max-width: 100%;
-   justify-items: center;
+
 }
+
+main {
+   width: 100%;
+   background-color: #d8d8d8;
+   display: block;
+   justify-items: center;
+   margin-top: 100px;
+   font-family: 'fuenteCorporativa';
+}
+
+
 
 .seccionPrincipal {
    position: relative;
@@ -22,7 +25,6 @@ body {
    justify-items: center;
    background-color: #19015c;
    align-content: center;
-
 }
 
 .areaTitulo {
@@ -30,6 +32,7 @@ body {
    background-color: #000000;
    margin: 40px 20px;
    box-shadow: 0 0 25px #ffffff;
+      font-family: 'fuenteCorporativa';
 }
 
 .textoTitulo {
@@ -97,6 +100,15 @@ body {
    color: #000000;
    margin: 0%;
    text-align: center;
+}
+
+.areaBDHosting {
+   position: absolute;
+   bottom: 180px;
+   left: 160px;
+   height: 45px;
+   color: #ffffff;
+   overflow: hidden;
 }
 
 /* BARRA PROGRESO */

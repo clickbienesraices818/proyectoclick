@@ -79,7 +79,7 @@
 
     <script>
         // PASAR LOS DATOS DE LOS PREDIOS A ARREGLO DE JAVASCRIPT
-        var listatempnoticias = '<?php echo json_encode($arraynoticias, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK); ?>'
+        var listatempnoticias = '<?php echo json_encode($arraynoticias, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK); ?>';
         var listaNoticias = JSON.parse(listatempnoticias);
     </script>
 

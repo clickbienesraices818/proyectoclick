@@ -1,4 +1,3 @@
-
 <!-- CODIGO PARA INSERTAR EL MENU DE 1ER NIVEL -->
 <nav class=barramenu>
       <a class="arealogo"> <img id="imglogo"
@@ -12,32 +11,49 @@
             <li class="contenedorsubmenu">
                   <a class="opcionmenu" href="php/ofertas-urbanas.php">Ofertas Urbanas</a>
                   <ul>
-                        <?php 
-                              foreach ($arraycategoriasurbanas as $categoria) {
-                                    $varcategoriamenu = $categoria["Categoria"];
-                                    $varcodigocategoria = $categoria["Codigo_Categoria"];
+                        <?php
+                        foreach ($arraycategoriasurbanas as $categoria) {
+                              $varcategoriamenu = $categoria["Categoria"];
+                              $varcodigocategoria = $categoria["Codigo_Categoria"];
 
-                                    echo "<li class='btnopcion'>
+                              echo "<li class='btnopcion'>
                                           <a class='opcionsubmenu' href='php/desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> 
                                           </li>";
-                              };
+                        };
                         ?>
                   </ul>
             </li>
             <li class="contenedorsubmenu">
                   <a class="opcionmenu" href="php/ofertas-rurales.php">Ofertas Rurales</a>
                   <ul>
-                        <?php 
-                              foreach ($arraycategoriasrurales as $categoria) {
-                                    $varcategoriamenu = $categoria["Categoria"];
-                                    $varcodigocategoria = $categoria["Codigo_Categoria"];
-                                    echo "<li class='btnopcion'>
+                        <?php
+                        foreach ($arraycategoriasrurales as $categoria) {
+                              $varcategoriamenu = $categoria["Categoria"];
+                              $varcodigocategoria = $categoria["Codigo_Categoria"];
+                              echo "<li class='btnopcion'>
                                           <a class='opcionsubmenu' href='php/desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> 
                                           </li>";
-                              };
+                        };
                         ?>
                   </ul>
             </li>
+
+            <li class="contenedorsubmenu">
+                  <a class="opcionmenu" href="php/ofertas-suburbanas.php">Ofertas Suburbanas</a>
+                  <ul>
+                         <?php
+                        foreach ($arraycategoriassuburbanas as $categoria) {
+                              $varcategoriamenu = $categoria["Categoria"];
+                              $varcodigocategoria = $categoria["Codigo_Categoria"];
+
+                              echo "<li class='btnopcion'>
+                                          <a class='opcionsubmenu' href='php/desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> 
+                                          </li>";
+                        };
+                        ?>
+                  </ul>
+            </li>
+            
             <li>
                   <a class="opcionmenu" href="php/desplegarnoticias.php?idnoticia=TODAS">Noticias
                   </a>
@@ -48,4 +64,3 @@
             </li>
       </ul>
 </nav>
-

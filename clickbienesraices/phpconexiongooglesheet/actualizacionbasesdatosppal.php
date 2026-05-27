@@ -9,7 +9,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Onclick</title>
+   <title>Actualizar BD SITE</title>
 
    <link rel="stylesheet" href="styleactualizarbasedatos.css">
 
@@ -19,26 +19,41 @@
 </head>
 
 <body>
-   <section class="seccionPrincipal">
-      <div class="areaTitulo">
-         <p class="textoTitulo">ACTUALIZACION TABLAS BASE DE DATOS SITE</p>
-      </div>
 
-      <div class="areaBotonesopciones">
-         <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Predios')">Tabla Predios</button>
-         <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Caracteristicas')">Tabla Caracteristicas</button>
-         <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Imagenes')">Tabla Imagenes</button>
-         <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Categorias')">Tabla Categorias</button>
-         <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Noticias')">Tabla Noticias</button>
-      </div>
+   <main>
 
-      <div id="areaMensaje" class="areaMensaje">
-         <p id="textoMensaje" class="textoMensaje">
-            Seleccione la Tabla para Actualizar
+
+      <section class="seccionPrincipal">
+         <div class="areaTitulo">
+            <p class="textoTitulo">ACTUALIZACION TABLAS BASE DE DATOS SITE</p>
+         </div>
+
+         <div class="areaBotonesopciones">
+            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Predios')">Tabla Predios</button>
+            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Caracteristicas')">Tabla Caracteristicas</button>
+            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Imagenes')">Tabla Imagenes</button>
+            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Categorias')">Tabla Categorias</button>
+            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Noticias')">Tabla Noticias</button>
+         </div>
+
+         <div id="areaMensaje" class="areaMensaje">
+            <p id="textoMensaje" class="textoMensaje">
+               Seleccione la Tabla para Actualizar
+            </p>
+         </div>
+
+      </section>
+
+
+      <div class="areaBDHosting">
+         <p>
+            <?php
+            $conexionHosting = file_get_contents('conexionBDHosting.php');
+            echo nl2br(htmlspecialchars($conexionHosting));
+            ?>
          </p>
       </div>
-   </section>
-
+   </main>
 
    <script>
       async function actualizarTablaPHP(vartabla) {

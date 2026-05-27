@@ -89,14 +89,13 @@
                   Ofertas Rurales
                </button>
             </a>
-            <!--  
-            <a href="php/ofertas-suburbanas.php">
+
+            <a href="php/ofertas-rurales.php">
                <button type="button">
-                  <img class="imgboton" src="imagenes_site/suburbano.png">
+                  <img class="imgboton" src="imagenes_site/rural.png">
                   Ofertas Suburbanas
                </button>
             </a>
-            -->
 
             <a href="php/desplegarnoticias.php?idnoticia=TODAS">
                <button type="button">
