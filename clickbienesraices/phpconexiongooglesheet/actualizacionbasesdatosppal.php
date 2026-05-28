@@ -23,17 +23,32 @@
    <main>
 
 
+
       <section class="seccionPrincipal">
+
          <div class="areaTitulo">
             <p class="textoTitulo">ACTUALIZACION TABLAS BASE DE DATOS SITE</p>
          </div>
 
-         <div class="areaBotonesopciones">
-            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Predios')">Tabla Predios</button>
-            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Caracteristicas')">Tabla Caracteristicas</button>
-            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Imagenes')">Tabla Imagenes</button>
-            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Categorias')">Tabla Categorias</button>
-            <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Noticias')">Tabla Noticias</button>
+         <div class="areaBasedatos">
+            <p class="tituloBasedatos">Seleccione la BD</p>
+            <input type="radio" id="bdhosting" name="basedatos" value="BDHosting" class="radioOpcion">
+            <label for="bdhosting">BD Hosting</label>
+
+            <input type="radio" id="bdlocal" name="basedatos" value="BDLocal" class="radioOpcion">
+            <label for="bdlocal">BD Local</label><br>
+         </div>
+
+         <div class="areaTablas">
+            <p class="tituloAreabotones">Tablas Base Datos</p>
+            <div class="areaBotonesopciones">
+               <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Predios')">Predios</button>
+               <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Caracteristicas')">Caracteristicas</button>
+               <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Imagenes')">Imagenes</button>
+               <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Categorias')">Categorias</button>
+               <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Noticias')">Noticias</button>
+               <button type="button" class="botonOpcion" onclick="actualizarTablaPHP('Municipios')">Municipios</button>
+            </div>
          </div>
 
          <div id="areaMensaje" class="areaMensaje">
@@ -44,27 +59,36 @@
 
       </section>
 
-
-      <div class="areaBDHosting">
-         <p>
-            <?php
-            $conexionHosting = file_get_contents('conexionBDHosting.php');
-            echo nl2br(htmlspecialchars($conexionHosting));
-            ?>
-         </p>
-      </div>
    </main>
 
    <script>
+      // SELECCION TABLA A ACTUALIZAR
+
+      varbaselocal = document.getElementById("bdlocal");
+      varbaselocal.addEventListener("input", function() {
+         varbasedatos = varbaselocal.value;
+      })
+
+      varbasehosting = document.getElementById("bdhosting");
+      varbasehosting.addEventListener("input", function() {
+         varbasedatos = varbasehosting.value;
+      })
+
+      const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
       async function actualizarTablaPHP(vartabla) {
          try {
+
+            alert(`Procesando -->   ${varbasedatos}`);
+            if (varbasedatos === null)
+               return;
 
             vartablamay = vartabla.toUpperCase();
             var vartextoMensaje = document.getElementById("areaMensaje").style.backgroundColor = "red";
             var vartextoMensaje = document.getElementById("textoMensaje").innerText = `Actualizando la Tabla ${vartablamay}`;
 
             // Reemplaza 'funciones.php' por la ruta real de tu archivo
-            const respuesta = await fetch(`procesardatossheetppal.php?funcion=actualizar${vartabla}`);
+            const respuesta = await fetch(`procesardatossheetppal.php?funcion=actualizar${vartabla}&basedatos=${varbasedatos}`);
             const texto = await respuesta.text();
 
             // Muestra lo que devuelve el archivo PHP
@@ -72,10 +96,15 @@
             var vartextoMensaje = document.getElementById("areaMensaje").style.backgroundColor = "yellow";
             var vartextoMensaje = document.getElementById("textoMensaje").innerText = texto;
 
+            alert(`Proceso terminó Exitosamente -->   ${varbasedatos}`);
 
          } catch (error) {
             console.error('Error al conectar con PHP:', error);
          }
+
+         await wait(5000);
+
+         location.reload();
       }
    </script>
 

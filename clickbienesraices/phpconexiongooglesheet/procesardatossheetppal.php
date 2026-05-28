@@ -1,22 +1,28 @@
 <?php
 
 // Validar si se solicitó la acción específica
-if (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarPredios')
-    actualizarPredios();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCaracteristicas')
-    actualizarCaracteristicas();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarImagenes')
-    actualizarImagenes();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCategorias')
-    actualizarCategorias();
-elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarNoticias')
-    actualizarNoticias();
+
+if (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarPredios' && isset($_GET['basedatos']))
+    actualizarPredios($_GET['basedatos']);
+elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCaracteristicas' && isset($_GET['basedatos']))
+    actualizarCaracteristicas($_GET['basedatos']);
+elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarImagenes' && isset($_GET['basedatos']))
+    actualizarImagenes($_GET['basedatos']);
+elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarCategorias' && isset($_GET['basedatos']))
+    actualizarCategorias($_GET['basedatos']);
+elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarNoticias' && isset($_GET['basedatos']))
+    actualizarNoticias($_GET['basedatos']);
+elseif (isset($_GET['funcion']) && $_GET['funcion'] === 'actualizarMunicipios' && isset($_GET['basedatos']))
+    actualizarMunicipios($_GET['basedatos']);
 //---------------------------------------------------
 
-function actualizarPredios()
+function actualizarPredios($varbasedatos)
 {
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
-    include 'conexionBDHosting.php';
+    if ($varbasedatos === "BDHosting")
+        include 'conexionBDHosting.php';
+    elseif ($varbasedatos === "BDLocal")
+        include 'conexionBDLocal.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
     include  'conexiongooglesheetpredios.php';
@@ -87,17 +93,20 @@ function actualizarPredios()
 
 
 // --------------    ACTUALIZAR LAS CARACTERISTICAS DE LOS PREDIOS
-function actualizarCaracteristicas()
+function actualizarCaracteristicas($varbasedatos)
 {
     set_time_limit(0);
 
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
-    include 'conexionBDHosting.php';
+    if ($varbasedatos === "BDHosting")
+        include 'conexionBDHosting.php';
+    elseif ($varbasedatos === "BDLocal")
+        include 'conexionBDLocal.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
     include  'conexiongooglesheetpredios.php';
 
-    
+
     //------------------------------------------------------------------
     // BORRA LA TABLA DE CARACTERISTICAS
     $sqlcaracteristicas = "DELETE
@@ -142,11 +151,14 @@ function actualizarCaracteristicas()
 
 //---------------------------------------------------------------------------
 //    ACTUALIZAR LAS BD IMAGENES
-function actualizarImagenes()
+function actualizarImagenes($varbasedatos)
 {
     set_time_limit(0);
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
-    include 'conexionBDHosting.php';
+    if ($varbasedatos === "BDHosting")
+        include 'conexionBDHosting.php';
+    elseif ($varbasedatos === "BDLocal")
+        include 'conexionBDLocal.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
     include  'conexiongooglesheetpredios.php';
@@ -195,65 +207,15 @@ function actualizarImagenes()
     echo "Se Procesaron: " . $varregprocesados . "  Imagenes";
 };
 
-
-//---------------------------------------------------------------------------
-//    ACTUALIZAR LAS BD CATEGORIAS
-function actualizarCategorias()
-{
-    // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
-    include 'conexionBDHosting.php';
-
-    //LLAMADO A LA CONEXION CON GOOGLESHEET
-    include  'conexiongooglesheetpredios.php';
-
-    // BORRA LA TABLA DE CATEGORIAS
-    $sqlcategorias = "DELETE
-      FROM pr_categorias";
-
-    $categoriasTotal = $conexion->query($sqlcategorias);
-
-    //------------------------------------------------------------------
-    /* TRAER LAS IMAGENES OS PREDIOS DESDE GOOGLE SHEET
-        Y SUBIRLOS A LA BASE DE DATOS */
-
-
-    $range = "PR Categorias Exportar!A2:F10000"; // Rango a leer
-    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
-    $varcategorias = $response->getValues();
-    $varregtotal = count($varcategorias);
-    $varregprocesados = 0;
-
-    if (!empty($varcategorias)) {
-        foreach ($varcategorias as $categoria) {
-            if (!empty([$categoria[0]])) {
-                $varregprocesados++;
-                $varcodigocategoria = $categoria[0];
-                $varcategoria = $categoria[1];
-                $varcategoriaredes = $categoria[2];
-                $varimagen = $categoria[3];
-
-                $sqlcategorias = "INSERT INTO pr_categorias (Codigo_Categoria, Categoria, 
-                                            Categoria_Redes, Imagen)
-                                VALUES ('$varcodigocategoria', '$varcategoria', '$varcategoriaredes', '$varimagen')";
-
-                $categoriasTotal = $conexion->query($sqlcategorias);
-            };
-        };
-    };
-
-    // CERRAR LA CONEXION
-    mysqli_close($conexion);
-
-    echo "Se Procesaron: " . $varregprocesados . "  categorias";
-};
-
-
 //---------------------------------------------------------------------------
 //    ACTUALIZAR LAS BD NOTICIAS
-function actualizarNoticias()
+function actualizarNoticias($varbasedatos)
 {
     // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
-    include 'conexionBDHosting.php';
+    if ($varbasedatos === "BDHosting")
+        include 'conexionBDHosting.php';
+    elseif ($varbasedatos === "BDLocal")
+        include 'conexionBDLocal.php';
 
     //LLAMADO A LA CONEXION CON GOOGLESHEET
     include  'conexiongooglesheetnoticias.php';
@@ -290,7 +252,7 @@ function actualizarNoticias()
                 $varimagen = $noticia[7];
                 $varactivo = $noticia[8];
 
-                
+
                 $sqlnoticias = "INSERT INTO ne_noticias (ID_Noticia, Fecha_Publicar, Fecha_Desmontar,
                                             Titulo, Contenido, Leer_Mas, Creditos, Imagen, Activo)
                                 VALUES ('$varidnoticia', '$varfechapublicar', '$varfechadesmontar', 
@@ -307,6 +269,116 @@ function actualizarNoticias()
 
     echo "Se Procesaron: " . $varregprocesados . "  noticias";
 };
+
+//---------------------------------------------------------------------------
+//    ACTUALIZAR LAS BD CATEGORIAS
+function actualizarCategorias($varbasedatos)
+{
+
+    set_time_limit(0);
+    // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
+
+    if ($varbasedatos === "BDHosting")
+        include 'conexionBDHosting.php';
+    elseif ($varbasedatos === "BDLocal")
+        include 'conexionBDLocal.php';
+
+
+    //LLAMADO A LA CONEXION CON GOOGLESHEET
+    include  'conexiongooglesheetpredios.php';
+
+    // BORRA LA TABLA DE CATEGORIAS
+    $sqlcategorias = "DELETE
+      FROM pr_categorias";
+
+    $categoriasTotal = $conexion->query($sqlcategorias);
+
+    //------------------------------------------------------------------
+    /* TRAER LAS CATEGORIAS DESDE GOOGLE SHEET
+        Y SUBIRLOS A LA BASE DE DATOS */
+
+
+    $range = "PR Categorias Exportar!A2:F10000"; // Rango a leer
+    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+    $varcategorias = $response->getValues();
+    $varregtotal = count($varcategorias);
+    $varregprocesados = 0;
+
+    if (!empty($varcategorias)) {
+        foreach ($varcategorias as $categoria) {
+            if (!empty([$categoria[0]])) {
+                $varregprocesados++;
+                $varcodigocategoria = $categoria[0];
+                $varcategoria = $categoria[1];
+                $varcategoriaredes = $categoria[2];
+                $varimagen = $categoria[3];
+
+                $sqlcategorias = "INSERT INTO pr_categorias (Codigo_Categoria, Categoria, 
+                                            Categoria_Redes, Imagen)
+                                VALUES ('$varcodigocategoria', '$varcategoria', '$varcategoriaredes', '$varimagen')";
+
+                $categoriasTotal = $conexion->query($sqlcategorias);
+            };
+        };
+    };
+
+    // CERRAR LA CONEXION
+    mysqli_close($conexion);
+
+    echo "Se Procesaron: " . $varregprocesados . "  categorias";
+};
+
+//---------------------------------------------------------------------------
+//    ACTUALIZAR LAS BD MUNICIPIOS
+function actualizarMunicipios($varbasedatos)
+{
+    // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
+    if ($varbasedatos === "BDHosting")
+        include 'conexionBDHosting.php';
+    elseif ($varbasedatos === "BDLocal")
+        include 'conexionBDLocal.php';
+
+    //LLAMADO A LA CONEXION CON GOOGLESHEET
+    include  'conexiongooglesheetmunicipios.php';
+
+    // BORRA LA TABLA DE IMAGENES
+    $sqlmunicipios = "DELETE
+      FROM si_municipios";
+
+    $municipiosTotal = $conexion->query($sqlmunicipios);
+
+    //------------------------------------------------------------------
+    /* TRAER LAS municipios  DESDE GOOGLE SHEET
+        Y SUBIRLOS A LA BASE DE DATOS */
+
+
+    $range = "SI Municipios!C2:C100"; // Rango a leer
+    $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+    $varmunicipios = $response->getValues();
+    $varregtotal = count($varmunicipios);
+    $varregprocesados = 0;
+
+    if (!empty($varmunicipios)) {
+        foreach ($varmunicipios as $municipio) {
+
+            if (!empty([$municipio[0]])) {
+                $varregprocesados++;
+                $varmunicipio = $municipio[0];
+
+                $sqlmunicipios = "INSERT INTO si_municipios (Municipio)
+                                VALUES ('$varmunicipio')";
+
+                $municipiosTotal = $conexion->query($sqlmunicipios);
+            };
+        };
+    };
+
+    // CERRAR LA CONEXION
+    mysqli_close($conexion);
+
+    echo "Se Procesaron: " . $varregprocesados . "  municipios";
+};
+
 
 
 /* // --- EJEMPLO 2: ESCRIBIR DATOS ---

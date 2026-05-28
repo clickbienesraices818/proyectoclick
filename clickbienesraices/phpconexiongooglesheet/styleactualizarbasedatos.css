@@ -2,26 +2,20 @@
    box-sizing: border-box;
 }
 
-body {
-
-}
-
 main {
    width: 100%;
-   background-color: #d8d8d8;
+   background-color: #ffffff;
    display: block;
    justify-items: center;
    margin-top: 100px;
    font-family: 'fuenteCorporativa';
 }
 
-
-
 .seccionPrincipal {
    position: relative;
    display: block;
    width: 80%;
-   height: 400px;
+   height: auto;
    justify-items: center;
    background-color: #19015c;
    align-content: center;
@@ -32,7 +26,7 @@ main {
    background-color: #000000;
    margin: 40px 20px;
    box-shadow: 0 0 25px #ffffff;
-      font-family: 'fuenteCorporativa';
+   font-family: 'fuenteCorporativa';
 }
 
 .textoTitulo {
@@ -45,8 +39,23 @@ main {
    font-weight: bold;
 }
 
-.areaFromulario {
+.areaBasedatos {
+   color: #ffffff;
+   justify-items: center;
+   margin: 30px 0px;
+}
 
+.tituloBasedatos {
+   font-size: 20px;
+   font-weight: bold;
+}
+
+.radioOpcion {
+   accent-color: #0EC10E;
+   cursor: pointer;
+}
+
+.areaFromulario {
    position: relative;
    width: 80%;
    height: auto;
@@ -54,6 +63,18 @@ main {
    justify-content: space-between;
 }
 
+.areaTablas {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border-style: groove;
+   padding: 20px;
+}
+
+.tituloAreabotones {
+   color: #ffffff;
+   font-size: 20px;
+}
 .areaBotonesopciones {
    position: relative;
    width: 100%;
@@ -61,6 +82,7 @@ main {
    justify-content: center;
    gap: 10px;
 }
+
 
 .botonOpcion {
    background-color: #0EC10E;
@@ -102,14 +124,6 @@ main {
    text-align: center;
 }
 
-.areaBDHosting {
-   position: absolute;
-   bottom: 180px;
-   left: 160px;
-   height: 45px;
-   color: #ffffff;
-   overflow: hidden;
-}
 
 /* BARRA PROGRESO */
 
