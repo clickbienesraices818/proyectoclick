@@ -102,7 +102,7 @@
             console.error('Error al conectar con PHP:', error);
          }
 
-         await wait(5000);
+         await wait(8000);
 
          location.reload();
       }

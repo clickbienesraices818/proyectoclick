@@ -8,10 +8,10 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN a2enmod rewrite
 
 # 4. Establecer el directorio de trabajo dentro del contenedor
-WORKDIR /var/www/html
+WORKDIR /var/www/php
 
 # 5. Copiar los archivos de tu proyecto local al directorio del servidor en el contenedor
-COPY . /var/www/html/
+COPY . /var/www/php/
 
 # 6. Exponer el puerto 80 para que el servidor web sea accesible
 EXPOSE 80
