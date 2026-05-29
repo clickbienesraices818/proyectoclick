@@ -7,7 +7,7 @@ main {
    background-color: #ffffff;
    display: block;
    justify-items: center;
-   margin-top: 100px;
+   margin-top: 50px;
    font-family: 'fuenteCorporativa';
 }
 
@@ -19,6 +19,7 @@ main {
    justify-items: center;
    background-color: #19015c;
    align-content: center;
+   border-radius: 30px;
 }
 
 .areaTitulo {
@@ -110,11 +111,13 @@ main {
    width: 60%;
    position: relative;
    margin: 50px 0px;
-   background-color: #d6d6d6;
+   background-color: #ffffff;
    padding: 10px 20px;
    border-radius: 60px;
-   border-color: #ffffff;
+   border-color: #0EC10E;
+   border-style: groove;
    justify-content: center;
+   box-shadow: 0 0 25px #ffffff;
 }
 
 .textoMensaje {
@@ -122,40 +125,6 @@ main {
    color: #000000;
    margin: 0%;
    text-align: center;
-}
-
-
-/* BARRA PROGRESO */
-
-.contenedor {
-   text-align: center;
-   width: 80%;
-   max-width: 500px;
-}
-
-/* Contenedor gris de la barra */
-.barra-fondo {
-   width: 100%;
-   background-color: #e0e0e0;
-   border-radius: 25px;
-   padding: 3px;
-   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Barra de color que se llena */
-.barra-progreso {
-   /* Usamos PHP para inyectar el ancho dinámicamente */
-   height: 25px;
-   background-color: #4caf50;
-   border-radius: 20px;
-   transition: width 0.5s ease-in-out;
-}
-
-.texto {
-   font-size: 18px;
-   font-weight: bold;
-   color: #333;
-   margin-bottom: 10px;
 }
 
 @font-face {
