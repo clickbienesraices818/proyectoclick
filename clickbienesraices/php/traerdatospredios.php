@@ -29,12 +29,12 @@
    if ($CODIGOPREDIO === "TODOS") {
       $sqlpredios = "SELECT *
          FROM pr_predios
-         WHERE Estado<>'Inactivo' AND Completo = 'TRUE' AND (Codigo_Categoria = '$CODCATEGORIA' OR Codigo_Categoria_B = '$CODCATEGORIA' )
+         WHERE Estado <> 'Inactivo' AND  (Codigo_Categoria = '$CODCATEGORIA' OR Codigo_Categoria_B = '$CODCATEGORIA' )
          ORDER BY Valor_Numero";
    } else {
       $sqlpredios = "SELECT *
          FROM pr_predios
-         WHERE Estado<>'Inactivo'  AND Completo = 'TRUE' AND Codigo_Predio = '$CODIGOPREDIO'
+         WHERE Estado<>'Inactivo' AND Codigo_Predio = '$CODIGOPREDIO'
          ORDER BY 1";
    };
 
@@ -55,7 +55,7 @@
          WHERE Codigo_Predio IN (
             SELECT Codigo_Predio
             FROM pr_predios
-            WHERE Estado<>'Inactivo' AND Completo = 'TRUE' AND (Codigo_Categoria = '$CODCATEGORIA' OR Codigo_Categoria_B = '$CODCATEGORIA')
+            WHERE Estado <> 'Inactivo' AND (Codigo_Categoria = '$CODCATEGORIA' OR Codigo_Categoria_B = '$CODCATEGORIA')
             GROUP BY 1)
          ORDER BY 1,4";
       } else {
@@ -81,7 +81,7 @@
          WHERE Codigo_Predio IN (
             SELECT Codigo_Predio
             FROM pr_predios
-            WHERE Estado<>'Inactivo' AND Completo = 'TRUE' AND (Codigo_Categoria = '$CODCATEGORIA' OR Codigo_Categoria_B = '$CODCATEGORIA')
+            WHERE Estado <> 'Inactivo' AND (Codigo_Categoria = '$CODCATEGORIA' OR Codigo_Categoria_B = '$CODCATEGORIA')
             GROUP BY 1)
          ORDER BY Codigo_Predio, Orden";
       } else {

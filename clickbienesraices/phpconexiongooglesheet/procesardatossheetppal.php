@@ -64,19 +64,18 @@ function actualizarPredios($varbasedatos)
                 $varareaconstruida = $Predio[11];
                 $varmedidaac = $Predio[12];
                 $varenlacesite = $Predio[13];
-                $varcompleto = $Predio[14];
                 $varcodigocategoria = $Predio[15];
                 $varcodigocategoriab = $Predio[16];
                 $varvalornumero = $Predio[17];
 
                 $sqlpredios = "INSERT INTO pr_predios (Codigo_Predio, Estado, Tipo, Categoria, Categoria_B,
                                     Municipio, Ubicacion, Descripcion, Valor, Area_Total, Medida_AT,
-                                    Area_Construida, Medida_AC, Enlace_Site, Completo, Codigo_Categoria,
+                                    Area_Construida, Medida_AC, Enlace_Site, Codigo_Categoria,
                                     Codigo_Categoria_B, Valor_Numero)
                             VALUES ('$varcodigopredio', '$varestado', '$vartipo', '$varcategoria',
                                     '$varcategoriab', '$varmunicipio', '$varubicacion', '$vardescripcion',
                                     '$varvalor', '$varareatotal', '$varmedidaat', '$varareaconstruida', 
-                                    '$varmedidaac', '$varenlacesite', '$varcompleto', '$varcodigocategoria',
+                                    '$varmedidaac', '$varenlacesite', '$varcodigocategoria',
                                     '$varcodigocategoriab', '$varvalornumero')";
 
                 $prediosTotal = $conexion->query($sqlpredios);

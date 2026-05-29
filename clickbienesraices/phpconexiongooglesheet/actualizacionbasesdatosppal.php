@@ -21,9 +21,6 @@
 <body>
 
    <main>
-
-
-
       <section class="seccionPrincipal">
 
          <div class="areaTitulo">
