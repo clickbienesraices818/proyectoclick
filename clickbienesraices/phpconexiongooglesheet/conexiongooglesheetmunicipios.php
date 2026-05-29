@@ -9,7 +9,7 @@ $client->setApplicationName('Conexion Google Sheets PHP');
 $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
 
 // Ruta a tu archivo JSON descargado en el paso 1
-$client->setAuthConfig('..\apikey\clickbienesraices-2aa3370471af.json');
+$client->setAuthConfig('..\apikey\clickbienesraices-4d642edc8252.json');
 
 // 2. Crear el servicio de Sheets
 $service = new Google_Service_Sheets($client);

@@ -1,7 +1,7 @@
 <?php
 
 // LLAMDA A CREAR LA CONEXION A LA BASE DE DATOS
-include 'conexionBDHosting.php';
+include '../php/conexionBDHosting.php';
 
 $varseltipo = 1;
 
@@ -64,8 +64,8 @@ mysqli_close($conexion);
       <!---------- BARRA MENU ------------------->
       <?php
       $TIPOOFERTA = "Todas";
-      include 'traercategorias.php';
-      include 'barramenu2nivel.php';
+      include '../php/traercategorias.php';
+      include '../php/barramenu2nivel.php';
       ?>
    </header>
    <main>

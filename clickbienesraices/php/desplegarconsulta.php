@@ -69,6 +69,9 @@
          case "RT":
             $varcategoria = "Temperaderos - Cabañas";
             break;
+         case "SL":
+            $varcategoria = "Lotes Suburbanos";
+            break;
          default:
             $varcategoria =  "Todas";
       }

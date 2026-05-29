@@ -1,12 +1,12 @@
 <?php
 
-if (isset($_POST['codigosPredios']))
-   $varcodigopredio = $_POST['codigosPredios'];
+ /* if (isset($_POST['codigosPredios']))
+   $varcodigopredio = $_POST['codigosPredios']; */
 
-/*$varcodigopredio = $_GET['codpredio'];*/
+$varcodigopredio = $_GET['codigopredio'];
 
 // LLAMADA A CREAR LA CONEXION A LA BASE DE DATOS
-include 'conexionBDHosting.php';
+include '../php/conexionBDHosting.php';
 
 //******************************************* */
 
@@ -114,7 +114,7 @@ mysqli_close($conexion);
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <!-- CSS PERSONALIZADOS -->
-   <link rel="stylesheet" href="../css/stylepiezaredesurbano.css">
+   <link rel="stylesheet" href="stylepiezaredesurbano.css">
    <title>Pieza Predio</title>
 </head>
 

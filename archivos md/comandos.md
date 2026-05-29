@@ -17,7 +17,7 @@
 > `descargar e instalar el python` <br>
 > `git config user.email` //verificar el correo sobre el que esta un git <br>
 > `git pull origin main` //(Replace main with your branch name if it is different, like master or a feature branch). <br>
-
+> `git rm -r --cached nombre-carpeta`  //borrar una capeta del git
 
 `//---------------- COMANDOS PYTHON ----------------------------------------<br>`
 

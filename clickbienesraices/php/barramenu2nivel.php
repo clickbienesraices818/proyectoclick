@@ -36,20 +36,23 @@
                   </ul>
             </li>
 
-            <li class="contenedorsubmenu">
-                  <a class="opcionmenu" href="ofertas-suburbanas.php">Ofertas Suburbanas</a>
-                  <ul>
-                        <?php
-                        foreach ($arraycategoriassuburbanas as $categoria) {
-                              $varcategoriamenu = $categoria["Categoria"];
-                              $varcodigocategoria = $categoria["Codigo_Categoria"];
-                              echo "<li class='btnopcion'>
-                                          <a class='opcionsubmenu' href='desplegarpredio.php?codigocategoria=" .  $varcodigocategoria . "&codigopredio=TODOS'>$varcategoriamenu</a> </li>";
-                        };
-                        ?>
-                  </ul>
-            </li>
-
+            <?php 
+            if (count($arraycategoriassuburbanas) >0 ) {
+                  echo "<li class='contenedorsubmenu'>
+                        <a class='opcionmenu' href='ofertas-suburbanas.php'>Ofertas Suburbanas</a>";
+                              echo "<ul>";
+                                    foreach ($arraycategoriassuburbanas as $categoria) {
+                                          $varcategoriamenu = $categoria['Categoria'];
+                                          $varcodigocategoria = $categoria['Codigo_Categoria'];
+                                          echo "<li class='btnopcion'>
+                                                <a class='opcionsubmenu' href='desplegarpredio.php?codigocategoria=' .  $varcodigocategoria . '&codigopredio=TODOS'>$varcategoriamenu</a> 
+                                          </li>";
+                                    };
+                              echo "</ul>
+                        </li>";
+            }
+            ?>
+            
             <li>
                   <a class="opcionmenu" href="desplegarnoticias.php?idnoticia=TODAS">Noticias
                   </a>

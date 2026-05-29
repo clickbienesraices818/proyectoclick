@@ -48,7 +48,7 @@ function actualizarPredios($varbasedatos)
 
     if (!empty($varpredios)) {
         foreach ($varpredios as $Predio) {
-            if (($Predio[1] != "Inactivo") && ($Predio[14] = "TRUE")) {
+            if ($Predio[1] != "Inactivo" && $Predio[14] === 'TRUE') {
                 $varregprocesados++;
                 $varcodigopredio = $Predio[0];
                 $varestado = $Predio[1];
@@ -56,7 +56,7 @@ function actualizarPredios($varbasedatos)
                 $varcategoria = $Predio[3];
                 $varcategoriab = $Predio[4];
                 $varmunicipio = $Predio[5];
-                $varubicacion = $Predio[6];
+                $varubicacion = $Predio[6]; 
                 $vardescripcion = $Predio[7];
                 $varvalor = $Predio[8];
                 $varareatotal = $Predio[9];
