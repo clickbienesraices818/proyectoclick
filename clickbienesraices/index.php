@@ -15,7 +15,7 @@
 
 
    <!--------- SCRIPTS -------------------->
-   <title> Click Bienes prueba </title>
+   <title> Click Bienes Raices </title>
 
 </head>
 

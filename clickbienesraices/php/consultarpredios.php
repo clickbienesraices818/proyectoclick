@@ -9,7 +9,7 @@ $arraycodpredios = [];
 
 $sqlcodpredios = "SELECT Codigo_Predio, Categoria
          FROM pr_predios
-         WHERE Estado != 'Inactivo' AND Completo = 'TRUE'
+         WHERE Estado != 'Inactivo'
          ORDER BY 1";
 
 
